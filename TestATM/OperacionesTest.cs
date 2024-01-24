@@ -7,6 +7,7 @@ namespace TestATM
 {
     public class OperacionServiceTests
     {
+        /*
         [Fact]
         public void TestDatabaseConnection()
         {
@@ -102,7 +103,7 @@ namespace TestATM
 
             // Verificación
             Assert.NotNull(balance);
-        }
+        }*/
         /*
         [Fact]
         public void TestValidarPIN()

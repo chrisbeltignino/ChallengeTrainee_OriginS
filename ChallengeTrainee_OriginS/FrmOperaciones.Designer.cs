@@ -85,6 +85,7 @@
             btnRetiro.TabIndex = 45;
             btnRetiro.Text = "Retirar Saldo";
             btnRetiro.UseVisualStyleBackColor = true;
+            btnRetiro.Click += btnRetiro_Click;
             // 
             // btnSalir
             // 

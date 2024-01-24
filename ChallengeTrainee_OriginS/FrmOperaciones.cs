@@ -41,11 +41,17 @@ namespace Presentation
 
         private void btnBalance_Click(object sender, EventArgs e)
         {
-            if(_operacionService.RealizarBalance(_tarjetaEncontrada))
+            if (_operacionService.RealizarBalance(_tarjetaEncontrada))
             {
-                _parentForm.OpenChildForm(new FrmBalance(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
                 this.Close();
+                _parentForm.OpenChildForm(new FrmBalance(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
             }
+        }
+
+        private void btnRetiro_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            _parentForm.OpenChildForm(new FrmRetiro(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
         }
     }
 }
