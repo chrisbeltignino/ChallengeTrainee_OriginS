@@ -1,9 +1,9 @@
-using SimpleInjector.Lifestyles;
-using SimpleInjector;
-using Infrastructure.Services;
-using Infrastructure.Repositories;
-using Infrastructure.Persistence;
 using ATM.Application.Interfaces;
+using Infrastructure.Persistence;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
+using SimpleInjector;
+using SimpleInjector.Lifestyles;
 
 namespace ChallengeTrainee_OriginS
 {
@@ -25,16 +25,24 @@ namespace ChallengeTrainee_OriginS
             {
                 container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
-                // Registra tus servicios y repositorios aquí
+                // Registra los servicios y repositorios aquí
                 container.Register<ITarjetaService, TarjetaService>();
                 container.Register<IOperacionService, OperacionService>();
 
                 container.Register<ITarjetaRepository, TarjetaRepository>();
                 container.Register<IOperacionRepository, OperacionRepository>();
+                /*
+                */
 
-                // Registra tu DbContext aquí
-                container.Register<Db_Connection>(Lifestyle.Scoped);
+                // Registra DbContext aquí
 
+                container.Register<Db_Connection>(() =>
+                {
+                    var options = DBConfig.GetOptions();
+                    return new Db_Connection(options);
+                }, Lifestyle.Scoped);
+
+                //container.Register<Db_Connection>(Lifestyle.Scoped);
                 // Registra el Formulario Hijo
 
                 //container.Register<FrmHome>(Lifestyle.Scoped);
@@ -45,10 +53,13 @@ namespace ChallengeTrainee_OriginS
 
                 // Comprueba si la configuración del contenedor es válida
                 container.Verify();
+
                 // To customize application configuration such as set high DPI settings or default font,
                 // see https://aka.ms/applicationconfiguration.
                 ApplicationConfiguration.Initialize();
-                Application.Run(new FrmHome());
+                Application.Run(new FrmATM(
+                    container.GetInstance<ITarjetaService>(),
+                    container.GetInstance<IOperacionService>()));
             }
         }
     }

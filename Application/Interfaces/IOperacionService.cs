@@ -1,9 +1,4 @@
 ﻿using Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ATM.Application.Interfaces
 {
@@ -11,6 +6,6 @@ namespace ATM.Application.Interfaces
     {
         public bool RealizarRetiro(Tarjeta tarjeta, decimal cantidad);
         public Operacion ObtenerPorId(int id);
-        public Tarjeta ObtenerInformacionBalance(string numTarjeta);
+        public Tarjeta ObtenerInformacionBalance(Tarjeta tarjeta);
     }
 }

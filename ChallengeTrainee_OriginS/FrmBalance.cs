@@ -2,10 +2,19 @@
 using ChallengeTrainee_OriginS;
 using Core;
 using Infrastructure.Persistence;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Presentation
 {
-    public partial class FrmOperaciones : Form
+    public partial class FrmBalance : Form
     {
         private readonly ITarjetaService _tarjetaService;
         private readonly IOperacionService _operacionService;
@@ -16,7 +25,7 @@ namespace Presentation
 
         private FrmATM _parentForm;
 
-        public FrmOperaciones(ITarjetaService tarjetaService, IOperacionService operacionService, Db_Connection db, Tarjeta tarjetaEncontrada, FrmATM parentForm)
+        public FrmBalance(ITarjetaService tarjetaService, IOperacionService operacionService, Db_Connection db, Tarjeta tarjetaEncontrada, FrmATM parentForm)
         {
             InitializeComponent();
 
@@ -28,18 +37,7 @@ namespace Presentation
             this._parentForm = parentForm;
         }
 
-        private void FrmOperaciones_Load(object sender, EventArgs e)
-        {
-            lblCliente.Text = $"{_tarjetaEncontrada.Cliente.Nombre} {_tarjetaEncontrada.Cliente.Apellido}";
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            _parentForm.OpenChildForm(new FrmHome(_tarjetaService, _operacionService, db, _parentForm));
-        }
-
-        private void btnBalance_Click(object sender, EventArgs e)
+        private void FrmBalance_Load(object sender, EventArgs e)
         {
 
         }

@@ -1,10 +1,5 @@
 ﻿using ATM.Application.Interfaces;
 using Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
@@ -51,9 +46,9 @@ namespace Infrastructure.Services
             return _operacionRepository.ObtenerPorId(id);
         }
 
-        public Tarjeta ObtenerInformacionBalance(string numTarjeta)
+        public Tarjeta ObtenerInformacionBalance(Tarjeta tarjeta)
         {
-            return _tarjetaRepository.ObtenerClienteTarjeta(numTarjeta);
+            return _tarjetaRepository.ObtenerClienteTarjeta(tarjeta);
         }
     }
 }

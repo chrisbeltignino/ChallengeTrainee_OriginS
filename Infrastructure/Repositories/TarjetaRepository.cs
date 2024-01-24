@@ -2,11 +2,6 @@
 using Core;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
@@ -23,7 +18,10 @@ namespace Infrastructure.Repositories
         {
             try
             {
-                return _dbContext.Tarjetas.FirstOrDefault(t => t.Numero_Tarjeta == numTarjeta);
+                return _dbContext.Tarjetas
+                        .Include(t => t.Cliente)
+                        .Include(t => t.Operaciones)
+                        .FirstOrDefault(t => t.Numero_Tarjeta == numTarjeta);
             }
             catch (Exception ex)
             {
@@ -31,13 +29,13 @@ namespace Infrastructure.Repositories
             }
         }
 
-        public Tarjeta ObtenerClienteTarjeta(string numTarjeta)
+        public Tarjeta ObtenerClienteTarjeta(Tarjeta tarjeta)
         {
             try
             {
                 return _dbContext.Tarjetas
                        .Include(t => t.Cliente)
-                       .FirstOrDefault(t => t.Numero_Tarjeta == numTarjeta);
+                       .FirstOrDefault(t => t.ID_Tarjeta == tarjeta.ID_Tarjeta);
             }
             catch (Exception ex)
             {

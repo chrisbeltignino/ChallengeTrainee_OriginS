@@ -2,9 +2,6 @@ using Core;
 using Infrastructure.Persistence;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TestATM
 {

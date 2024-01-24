@@ -1,10 +1,5 @@
 ﻿using ATM.Application.Interfaces;
 using Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
@@ -22,9 +17,21 @@ namespace Infrastructure.Services
             return _tarjetaRepository.ObtenerTarjeta(numTarjeta);
         }
 
+        public Tarjeta ObtenerClienteTarjeta(Tarjeta tarjeta)
+        {
+            return _tarjetaRepository.ObtenerClienteTarjeta(tarjeta);
+        }
+
         public bool ValidarPIN(Tarjeta tarjeta, string pinIngresado)
         {
-            return tarjeta != null && !tarjeta.Bloqueada && tarjeta.PIN == pinIngresado;
+            return tarjeta != null && tarjeta.PIN == pinIngresado;
+        }
+
+        public bool VerificarTarjetaBloqueada(string numeroTarjeta)
+        {
+            Tarjeta tarjeta = _tarjetaRepository.ObtenerTarjeta(numeroTarjeta);
+
+            return tarjeta != null && tarjeta.Bloqueada;
         }
 
         public bool BloquearTarjeta(Tarjeta tarjeta)
