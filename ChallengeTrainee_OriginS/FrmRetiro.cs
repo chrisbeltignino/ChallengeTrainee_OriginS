@@ -13,6 +13,7 @@ namespace Presentation
         private Db_Connection db;
 
         Tarjeta _tarjetaEncontrada;
+        Operacion _operacionRegistrada;
 
         private FrmATM _parentForm;
 
@@ -58,10 +59,11 @@ namespace Presentation
 
             if (numCantidad > 0)
             {
-                if (_operacionService.RealizarRetiro(_tarjetaEncontrada, numCantidad))
+                if (_operacionService.ValidarSaldoSuficiente(_tarjetaEncontrada, numCantidad))
                 {
                     this.Close();
-                    _parentForm.OpenChildForm(new FrmReporte(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
+                    _operacionRegistrada = _operacionService.RealizarRetiro(_tarjetaEncontrada, numCantidad);
+                    _parentForm.OpenChildForm(new FrmReporte(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _operacionRegistrada, _parentForm));
                 }
                 else
                 {
@@ -82,6 +84,12 @@ namespace Presentation
         private void FrmRetiro_Load(object sender, EventArgs e)
         {
             lblSaldo.Text = $"{_tarjetaEncontrada.Saldo.ToString("C2")}";
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            _parentForm.OpenChildForm(new FrmOperaciones(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
         }
     }
 }

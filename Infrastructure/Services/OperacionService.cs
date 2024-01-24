@@ -19,26 +19,31 @@ namespace Infrastructure.Services
             _operacionRepository.RegistrarOperacion(operacion);
         }
 
-        public bool RealizarRetiro(Tarjeta tarjeta, decimal cantidad)
+        public Operacion RealizarRetiro(Tarjeta tarjeta, decimal cantidad)
         {
-            if (tarjeta.Saldo >= cantidad)
+            tarjeta.Saldo -= cantidad;
+            _tarjetaRepository.ActualizarTarjeta(tarjeta);
+
+            var operacion = new Operacion
             {
-                tarjeta.Saldo -= cantidad;
-                _tarjetaRepository.ActualizarTarjeta(tarjeta);
+                ID_Tarjeta = tarjeta.ID_Tarjeta,
+                Fecha_Operacion = DateTime.Now,
+                Codigo_Operacion = "Retiro",
+                Cantidad_Retirada = cantidad
+            };
 
-                var operacion = new Operacion
-                {
-                    ID_Tarjeta = tarjeta.ID_Tarjeta,
-                    Fecha_Operacion = DateTime.Now,
-                    Codigo_Operacion = "Retiro",
-                    Cantidad_Retirada = cantidad
-                };
+            _operacionRepository.RegistrarOperacion(operacion);
 
-                _operacionRepository.RegistrarOperacion(operacion);
+            return operacion;
+        }
 
-                return true;
+        public bool ValidarSaldoSuficiente(Tarjeta tarjeta, decimal cantidad)
+        {
+            if (tarjeta != null && tarjeta.Saldo >= cantidad)
+            {
+                return true; // Hay saldo suficiente
             }
-            return false;
+            return false; // No hay saldo suficiente
         }
 
         public Operacion ObtenerPorId(int id)
