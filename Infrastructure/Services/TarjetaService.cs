@@ -17,9 +17,9 @@ namespace Infrastructure.Services
             return _tarjetaRepository.ObtenerTarjeta(numTarjeta);
         }
 
-        public Tarjeta ObtenerClienteTarjeta(Tarjeta tarjeta)
+        public Tarjeta ObtenerTarjeta(Tarjeta tarjeta)
         {
-            return _tarjetaRepository.ObtenerClienteTarjeta(tarjeta);
+            return _tarjetaRepository.ObtenerTarjeta(tarjeta);
         }
 
         public bool ValidarPIN(Tarjeta tarjeta, string pinIngresado)

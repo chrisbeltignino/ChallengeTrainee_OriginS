@@ -54,6 +54,7 @@
             btnSalir.TabIndex = 47;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // btnAtras
             // 
@@ -64,6 +65,7 @@
             btnAtras.TabIndex = 48;
             btnAtras.Text = "Atras";
             btnAtras.UseVisualStyleBackColor = true;
+            btnAtras.Click += btnAtras_Click;
             // 
             // label1
             // 

@@ -41,7 +41,11 @@ namespace Presentation
 
         private void btnBalance_Click(object sender, EventArgs e)
         {
-
+            if(_operacionService.RealizarBalance(_tarjetaEncontrada))
+            {
+                _parentForm.OpenChildForm(new FrmBalance(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
+                this.Close();
+            }
         }
     }
 }

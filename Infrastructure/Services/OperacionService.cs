@@ -21,7 +21,7 @@ namespace Infrastructure.Services
 
         public bool RealizarRetiro(Tarjeta tarjeta, decimal cantidad)
         {
-            if (tarjeta != null && !tarjeta.Bloqueada && tarjeta.Saldo >= cantidad)
+            if (tarjeta.Saldo >= cantidad)
             {
                 tarjeta.Saldo -= cantidad;
                 _tarjetaRepository.ActualizarTarjeta(tarjeta);
@@ -46,9 +46,19 @@ namespace Infrastructure.Services
             return _operacionRepository.ObtenerPorId(id);
         }
 
-        public Tarjeta ObtenerInformacionBalance(Tarjeta tarjeta)
+        public bool RealizarBalance(Tarjeta tarjeta)
         {
-            return _tarjetaRepository.ObtenerClienteTarjeta(tarjeta);
+            var operacion = new Operacion
+            {
+                ID_Tarjeta = tarjeta.ID_Tarjeta,
+                Fecha_Operacion = DateTime.Now,
+                Codigo_Operacion = "Balance",
+                Cantidad_Retirada = 0
+            };
+
+            _operacionRepository.RegistrarOperacion(operacion);
+
+            return true;
         }
     }
 }

@@ -29,17 +29,18 @@ namespace Infrastructure.Repositories
             }
         }
 
-        public Tarjeta ObtenerClienteTarjeta(Tarjeta tarjeta)
+        public Tarjeta ObtenerTarjeta(Tarjeta tarjeta)
         {
             try
             {
                 return _dbContext.Tarjetas
                        .Include(t => t.Cliente)
+                       .Include(t => t.Operaciones)
                        .FirstOrDefault(t => t.ID_Tarjeta == tarjeta.ID_Tarjeta);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener al Cliente: " + ex.Message, ex);
+                throw new Exception("Error al obtener al Tarjeta: " + ex.Message, ex);
             }
         }
 
