@@ -48,9 +48,11 @@ Se utiliza SQL Server como base de datos, y se han creado tablas para almacenar 
 - **Diagrama de Entidad-Relación (DER)**: (imagen)
 - **Diagrama de Flujo de la Aplicación**: (imagen)
 
-## Repositorio y Versionado
+## Funcionalidades extras
 
-El código fuente se encuentra en un repositorio público en GitHub. Se han utilizado las mejores prácticas de control de versiones para mantener un historial claro.
+- Se agrego una nueva Entidad llamada Cliente que cada uno esta asociado a su tarjeta
+- Se agrego la funcionalidad de que la tarjeta una vez este bloqueada esta misma se desbloquee en 40seg dentro del programa.
+- Al momento de realizar la operacion de balance se muestra parte de la informacion de la persona asociada.
 
 ## Instrucciones para Ejecutar la Aplicación
 
