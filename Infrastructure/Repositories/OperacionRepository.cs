@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using ATM.Application.Interfaces;
 using Core;
 using Infrastructure.Persistence;
 using System;
@@ -32,6 +32,18 @@ namespace Infrastructure.Repositories
             catch (Exception ex)
             {
                 throw new Exception("Error al Registrar la Operacion: " + ex.Message, ex);
+            }
+        }
+
+        public Operacion ObtenerPorId(int id)
+        {
+            try
+            {
+                return _dbContext.Operaciones.FirstOrDefault(c => c.ID_Operacion == id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener la Operacion por ID: " + ex.Message, ex);
             }
         }
     }

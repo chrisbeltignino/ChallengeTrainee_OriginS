@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces
+namespace ATM.Application.Interfaces
 {
     public interface ITarjetaRepository
     {
         Tarjeta ObtenerTarjeta(string numTarjeta);
-        public void ActualizarTarjeta(Tarjeta tarjeta);
+        void ActualizarTarjeta(Tarjeta tarjeta);
+        Tarjeta ObtenerPorId(int id);
+        Tarjeta ObtenerClienteTarjeta(string numTarjeta);
     }
 }

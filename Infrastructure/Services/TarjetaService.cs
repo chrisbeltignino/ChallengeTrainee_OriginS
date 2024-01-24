@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using ATM.Application.Interfaces;
 using Core;
 using System;
 using System.Collections.Generic;

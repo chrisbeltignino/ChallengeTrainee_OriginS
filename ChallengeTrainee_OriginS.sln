@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "ChallengeTrainee_OriginS\Presentation.csproj", "{A81D3822-426A-473A-929A-6DD80233B23A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "ChallengeTrainee_OriginS\Presentation.csproj", "{A81D3822-426A-473A-929A-6DD80233B23A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{8165EF84-A0BA-4086-AF20-85137C9AD9B9}"
 EndProject
@@ -13,11 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{5043AB12-B389-4542-B27A-58E2D4A4031D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{303AE484-C9FA-4A59-8BA1-6384BE73ABCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{303AE484-C9FA-4A59-8BA1-6384BE73ABCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{AD896841-2B30-4E6A-B307-8A8D00C499CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATM.Application", "Application\ATM.Application.csproj", "{AD896841-2B30-4E6A-B307-8A8D00C499CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{A88DA26B-0BDE-4755-81EB-D76656D0F524}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{A88DA26B-0BDE-4755-81EB-D76656D0F524}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{44FA71A9-24F6-4C15-9A92-169360DBE81C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestATM", "TestATM\TestATM.csproj", "{FD5B2CA3-F951-4C03-94B0-3F8688682363}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{A88DA26B-0BDE-4755-81EB-D76656D0F524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A88DA26B-0BDE-4755-81EB-D76656D0F524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A88DA26B-0BDE-4755-81EB-D76656D0F524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5B2CA3-F951-4C03-94B0-3F8688682363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5B2CA3-F951-4C03-94B0-3F8688682363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5B2CA3-F951-4C03-94B0-3F8688682363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5B2CA3-F951-4C03-94B0-3F8688682363}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,7 @@ Global
 		{303AE484-C9FA-4A59-8BA1-6384BE73ABCF} = {57B2022D-0F23-46FE-8162-FFF2E4FCC036}
 		{AD896841-2B30-4E6A-B307-8A8D00C499CB} = {06310CE5-E833-409D-B932-601C296B2927}
 		{A88DA26B-0BDE-4755-81EB-D76656D0F524} = {5043AB12-B389-4542-B27A-58E2D4A4031D}
+		{FD5B2CA3-F951-4C03-94B0-3F8688682363} = {44FA71A9-24F6-4C15-9A92-169360DBE81C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AFC4994B-ACC8-4B6C-BA65-2764C51E1F22}

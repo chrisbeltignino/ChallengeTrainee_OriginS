@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using ATM.Application.Interfaces;
 using Core;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    public class OperacionService : IOperacionRepository
+    public class OperacionService : IOperacionService
     {
         private readonly IOperacionRepository _operacionRepository;
         private readonly ITarjetaRepository _tarjetaRepository;
@@ -43,13 +43,17 @@ namespace Infrastructure.Services
 
                 return true;
             }
-
             return false;
         }
 
-        public decimal ObtenerBalance(Tarjeta tarjeta)
+        public Operacion ObtenerPorId(int id)
         {
-            return tarjeta != null ? tarjeta.Saldo : 0;
+            return _operacionRepository.ObtenerPorId(id);
+        }
+
+        public Tarjeta ObtenerInformacionBalance(string numTarjeta)
+        {
+            return _tarjetaRepository.ObtenerClienteTarjeta(numTarjeta);
         }
     }
 }

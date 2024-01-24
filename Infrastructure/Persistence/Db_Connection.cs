@@ -39,6 +39,18 @@ namespace Infrastructure.Persistence
         /// <param name="modelBuilder">Constructor del modelo de la base de datos.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Tarjeta>()
+            .HasOne(t => t.Cliente)
+            .WithOne(c => c.Tarjeta)
+            .HasForeignKey<Tarjeta>(t => t.ID_Cliente);
+
+            modelBuilder.Entity<Operacion>()
+            .HasOne(o => o.Tarjeta)
+            .WithMany(t => t.Operaciones)
+            .HasForeignKey(o => o.ID_Tarjeta)
+            .IsRequired();
+
             base.OnModelCreating(modelBuilder);
         }
     }

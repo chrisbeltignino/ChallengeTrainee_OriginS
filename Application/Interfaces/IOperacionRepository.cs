@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces
+namespace ATM.Application.Interfaces
 {
     public interface IOperacionRepository
     {
         void RegistrarOperacion(Operacion operacion);
+        Operacion ObtenerPorId(int id);
     }
 }
