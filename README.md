@@ -43,10 +43,9 @@ El proyecto sigue una arquitectura limpia (Clean Architecture) y está organizad
 
 Se utiliza SQL Server como base de datos, y se han creado tablas para almacenar información sobre clientes, tarjetas y operaciones.
 
-## Diagramas
+## DER y Diagrama de Flujo de la Aplicación
 
-- **Diagrama de Entidad-Relación (DER)**: (imagen)
-- **Diagrama de Flujo de la Aplicación**: (imagen)
+![Diagrama de Flujo ATM](https://github.com/chrisbeltignino/ChallengeTrainee_OriginS/assets/51706356/3539798f-2653-4c0c-9ffe-5f98e518071f)
 
 ## Funcionalidades extras
 
