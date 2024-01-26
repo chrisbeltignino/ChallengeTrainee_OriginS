@@ -29,7 +29,7 @@ CREATE TABLE Tarjetas (
 
 -- Crear tabla Operaciones
 CREATE TABLE Operaciones (
-    ID_Operacion INT PRIMARY KEY,
+    ID_Operacion INT IDENTITY(1,1) PRIMARY KEY,
     ID_Tarjeta INT FOREIGN KEY REFERENCES Tarjetas(ID_Tarjeta),
     Fecha_Operacion DATETIME,
     Codigo_Operacion NVARCHAR(50),

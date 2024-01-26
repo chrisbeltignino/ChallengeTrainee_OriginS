@@ -19,6 +19,14 @@ namespace Presentation
         private int intentos = 4;
         private System.Windows.Forms.Timer desbloqueoTimer;
 
+        /// <summary>
+        /// Constructor de la clase FrmIngresoPIN.
+        /// </summary>
+        /// <param name="tarjetaService">Servicio de tarjetas.</param>
+        /// <param name="operacionService">Servicio de operaciones.</param>
+        /// <param name="db">Instancia del contexto de la base de datos.</param>
+        /// <param name="tarjetaEncontrada">Tarjeta asociada al formulario.</param>
+        /// <param name="parentForm">Formulario principal que contiene este formulario como hijo.</param>
         public FrmIngresoPIN(ITarjetaService tarjetaService, IOperacionService operacionService, Db_Connection db, Tarjeta tarjetaEncontrada, FrmATM parentForm)
         {
             InitializeComponent();
@@ -30,6 +38,7 @@ namespace Presentation
 
             this._parentForm = parentForm;
 
+            // Asigna el método NumeroBtn_Click a los eventos de los botones numéricos.
             btnCero.Click += NumeroBtn_Click;
             btnUno.Click += NumeroBtn_Click;
             btnDos.Click += NumeroBtn_Click;
@@ -42,6 +51,9 @@ namespace Presentation
             btnNueve.Click += NumeroBtn_Click;
         }
 
+        /// <summary>
+        /// Manejador de eventos para los botones numéricos.
+        /// </summary>
         private void NumeroBtn_Click(object sender, EventArgs e)
         {
             Button boton = (Button)sender;
@@ -55,16 +67,20 @@ namespace Presentation
             }
         }
 
+        /// <summary>
+        /// Manejador de eventos para el botón Aceptar.
+        /// </summary>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string numPIN = txtPIN.Text;
 
-            bool PINValido = _tarjetaService.ValidarPIN(_tarjetaEncontrada, numPIN);
-
             if (!_tarjetaService.VerificarTarjetaBloqueada(_tarjetaEncontrada.Numero_Tarjeta))
             {
+                bool PINValido = _tarjetaService.ValidarPIN(_tarjetaEncontrada, numPIN);
+
                 if (PINValido)
                 {
+                    // Abre el formulario de operaciones en el formulario principal.
                     _parentForm.OpenChildForm(new FrmOperaciones(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
                     intentosFallidos = 0;
                 }
@@ -75,13 +91,13 @@ namespace Presentation
                     if (intentosFallidos == 4)
                     {
                         BloquearTarjetaYConfigurarTimerDesbloqueo();
-                        MessageBox.Show("Supero el limite de intentos, pruebe mas tarde", "Tarjeta Bloqueada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Supero el límite de intentos, pruebe más tarde", "Tarjeta Bloqueada", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         intentosFallidos = 0;
                         intentos = 0;
                     }
                     else
                     {
-                        MessageBox.Show("El PIN ingresado no es valido. No se puede continuar. Tiene " + intentos + " intentos", "PIN invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("El PIN ingresado no es válido. No se puede continuar. Tiene " + intentos + " intentos", "PIN inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -91,32 +107,45 @@ namespace Presentation
             }
         }
 
+        /// <summary>
+        /// Manejador de eventos para el botón Limpiar.
+        /// </summary>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtPIN.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Bloquea la tarjeta y configura un temporizador para desbloquearla después de 40 segundos.
+        /// </summary>
         private void BloquearTarjetaYConfigurarTimerDesbloqueo()
         {
             _tarjetaService.BloquearTarjeta(_tarjetaEncontrada);
 
-            // Configurar temporizador para desbloquear la tarjeta después de 40 segundos
-            desbloqueoTimer = new System.Windows.Forms.Timer(); // 40,000 milisegundos = 40 segundos
-            desbloqueoTimer.Interval = 40000; // 40,000 milisegundos = 40 segundos
-            desbloqueoTimer.Tick += (sender, e) => DesbloquearTarjetaDespuesDeTimer();
+            // Configura temporizador para desbloquear la tarjeta después de 40 segundos.
+            desbloqueoTimer = new System.Windows.Forms.Timer();                                 // 40,000 milisegundos = 40 segundos
+            desbloqueoTimer.Interval = 40000;                                                   // 40,000 milisegundos = 40 segundos
+            desbloqueoTimer.Tick += (sender, e) => DesbloquearTarjetaDespuésDeTimer();
             desbloqueoTimer.Start();
         }
 
-        private void DesbloquearTarjetaDespuesDeTimer()
+        /// <summary>
+        /// Desbloquea la tarjeta después de que el temporizador haya transcurrido.
+        /// </summary>
+        private void DesbloquearTarjetaDespuésDeTimer()
         {
             _tarjetaService.DesbloquearTarjeta(_tarjetaEncontrada);
             intentosFallidos = 0;
             intentos = 0;
         }
 
+        /// <summary>
+        /// Manejador de eventos para el botón Salir.
+        /// </summary>
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+            // Abre el formulario de inicio en el formulario principal.
             _parentForm.OpenChildForm(new FrmHome(_tarjetaService, _operacionService, db, _parentForm));
         }
     }

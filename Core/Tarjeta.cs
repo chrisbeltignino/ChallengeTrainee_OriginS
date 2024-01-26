@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core
 {
+    /// <summary>
+    /// Entidad que representa una tarjeta en el sistema.
+    /// </summary>
     [Table("Tarjetas")]
     public class Tarjeta
     {
@@ -17,5 +20,14 @@ namespace Core
         [ForeignKey("ID_Cliente")]
         public virtual Cliente Cliente { get; set; }
         public ICollection<Operacion> Operaciones { get; set; }
+
+        /*
+        public Tarjeta() 
+        {
+            Numero_Tarjeta = string.Empty;
+            PIN = string.Empty;
+            Cliente = new Cliente();
+            Operaciones = new List<Operacion>();
+        }*/
     }
 }

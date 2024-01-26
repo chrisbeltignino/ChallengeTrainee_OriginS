@@ -4,15 +4,26 @@ using Infrastructure.Persistence;
 
 namespace Infrastructure.Repositories
 {
+    /// <summary>
+    /// Implementación del repositorio de operaciones.
+    /// </summary>
     public class OperacionRepository : IOperacionRepository
     {
         private readonly Db_Connection _dbContext;
 
+        /// <summary>
+        /// Constructor que recibe el contexto de la base de datos.
+        /// </summary>
+        /// <param name="dbContext">El contexto de la base de datos.</param>
         public OperacionRepository(Db_Connection dbContext)
         {
             _dbContext = dbContext;
         }
 
+        /// <summary>
+        /// Registra una nueva operación en la base de datos.
+        /// </summary>
+        /// <param name="operacion">La operación a ser registrada.</param>
         public void RegistrarOperacion(Operacion operacion)
         {
             try
@@ -30,11 +41,16 @@ namespace Infrastructure.Repositories
             }
         }
 
+        /// <summary>
+        /// Obtiene una operación por su ID.
+        /// </summary>
+        /// <param name="id">El ID de la operación a ser obtenida.</param>
+        /// <returns>La operación correspondiente al ID proporcionado.</returns>
         public Operacion ObtenerPorId(int id)
         {
             try
             {
-                return _dbContext.Operaciones.FirstOrDefault(c => c.ID_Operacion == id);
+                return _dbContext.Operaciones.FirstOrDefault(c => c.ID_Operacion == id) ?? new Operacion();
             }
             catch (Exception ex)
             {

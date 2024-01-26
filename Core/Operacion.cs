@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core
 {
+    /// <summary>
+    /// Entidad que representa una operación en el sistema.
+    /// </summary>
     [Table("Operaciones")]
     public class Operacion
     {
@@ -15,5 +18,6 @@ namespace Core
         public decimal Cantidad_Retirada { get; set; }
         [ForeignKey("ID_Tarjeta")]
         public virtual Tarjeta Tarjeta { get; set; }
+
     }
 }

@@ -16,6 +16,14 @@ namespace Presentation
 
         private FrmATM _parentForm;
 
+        /// <summary>
+        /// Constructor de la clase FrmOperaciones.
+        /// </summary>
+        /// <param name="tarjetaService">Servicio de tarjetas.</param>
+        /// <param name="operacionService">Servicio de operaciones.</param>
+        /// <param name="db">Instancia del contexto de la base de datos.</param>
+        /// <param name="tarjetaEncontrada">Tarjeta asociada al formulario.</param>
+        /// <param name="parentForm">Formulario principal que contiene este formulario como hijo.</param>
         public FrmOperaciones(ITarjetaService tarjetaService, IOperacionService operacionService, Db_Connection db, Tarjeta tarjetaEncontrada, FrmATM parentForm)
         {
             InitializeComponent();
@@ -28,29 +36,44 @@ namespace Presentation
             this._parentForm = parentForm;
         }
 
+        /// <summary>
+        /// Manejador de eventos que se ejecuta cuando se carga el formulario.
+        /// </summary>
         private void FrmOperaciones_Load(object sender, EventArgs e)
         {
             lblCliente.Text = $"{_tarjetaEncontrada.Cliente.Nombre} {_tarjetaEncontrada.Cliente.Apellido}";
         }
 
+        /// <summary>
+        /// Manejador de eventos para el botón Salir.
+        /// </summary>
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+            // Abre el formulario de inicio en el formulario principal.
             _parentForm.OpenChildForm(new FrmHome(_tarjetaService, _operacionService, db, _parentForm));
         }
 
+        /// <summary>
+        /// Manejador de eventos para el botón Balance.
+        /// </summary>
         private void btnBalance_Click(object sender, EventArgs e)
         {
             if (_operacionService.RealizarBalance(_tarjetaEncontrada))
             {
                 this.Close();
+                // Abre el formulario de balance en el formulario principal.
                 _parentForm.OpenChildForm(new FrmBalance(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
             }
         }
 
+        /// <summary>
+        /// Manejador de eventos para el botón Retiro.
+        /// </summary>
         private void btnRetiro_Click(object sender, EventArgs e)
         {
             this.Close();
+            // Abre el formulario de retiro en el formulario principal.
             _parentForm.OpenChildForm(new FrmRetiro(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
         }
     }

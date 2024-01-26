@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core
 {
+    /// <summary>
+    /// Entidad que representa a un cliente en el sistema.
+    /// </summary>
     [Table("Clientes")]
     public class Cliente
     {
@@ -14,5 +17,6 @@ namespace Core
         public string Localidad { get; set; }
         public string Telefono { get; set; }
         public virtual Tarjeta Tarjeta { get; set; }
+
     }
 }

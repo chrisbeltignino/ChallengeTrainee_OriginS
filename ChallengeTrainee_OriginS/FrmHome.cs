@@ -96,7 +96,7 @@ namespace Presentation
             }
             else
             {
-                MessageBox.Show("La tarjeta contiene 16 numeros.", "Tarjeta Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("La tarjeta debe contener 16 numeros.", "Tarjeta Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
