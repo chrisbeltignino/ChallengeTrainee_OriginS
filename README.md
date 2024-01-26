@@ -4,7 +4,7 @@ Esta aplicación de cajero automático (ATM) fue desarrollada como parte de un e
 
 ## Características Principales
 
-- **Entity Framework Core**: Utiliza Entity Framework para la gestión de la capa de acceso a datos, facilitando la interacción con la base de datos SQL Server.
+- **Entity Framework Core**: Utiliza Entity Framework Core para la gestión de la capa de acceso a datos, facilitando la interacción con la base de datos SQL Server.
   
 - **Capa de Negocio y Datos**: Se ha implementado una arquitectura de tres capas que separa claramente las responsabilidades entre la capa de presentación, la capa de negocio y la capa de acceso a datos.
 
