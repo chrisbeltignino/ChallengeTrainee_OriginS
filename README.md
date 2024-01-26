@@ -41,7 +41,11 @@ El proyecto sigue una arquitectura limpia (Clean Architecture) y está organizad
 
 ## Base de Datos
 
-Se utiliza SQL Server como base de datos, y se han creado tablas para almacenar información sobre clientes, tarjetas y operaciones.
+La aplicación utiliza SQL Server como sistema de gestión de bases de datos. La estructura de la base de datos ha sido generada mediante un script manual, el cual se encuentra en el archivo `Creacion_BD_ORIGINS.sql`. Este script incluye la creación de tablas para almacenar información clave relacionada con clientes, tarjetas y operaciones. Y ademas informacion precargada para realizar pruebas y testeos.
+
+Adicionalmente, para facilitar la reproducción del entorno de base de datos en otros sistemas, se ha exportado el esquema y los datos resultantes de la ejecución del script mencionado. El archivo resultante de esta exportación se denomina `BD_ORIGIN_S_SCRIPT.sql`.
+
+Por favor, asegúrese de ejecutar el script de creación y, si es necesario, el script de exportación para establecer el entorno de base de datos adecuado para la aplicación.
 
 ## DER y Diagrama de Flujo de la Aplicación
 
