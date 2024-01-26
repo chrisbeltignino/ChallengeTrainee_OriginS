@@ -70,5 +70,5 @@ Por favor, asegúrese de ejecutar el script de creación y, si es necesario, el 
 ## Instrucciones para Ejecutar la Aplicación
 
 1. Clona este repositorio.
-2. Configura la cadena de conexión a la base de datos en la capa de Infrastructure/Persistence/DbConfig.cs.
+2. Configura la cadena de conexión a la base de datos en la capa de `Infrastructure/Persistence/DbConfig.cs`.
 3. Ejecuta la aplicación desde la interfaz de usuario (Windows Forms).
