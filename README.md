@@ -35,16 +35,16 @@ El proyecto sigue una arquitectura limpia (Clean Architecture) y está organizad
 - Si el PIN es correcto, se muestra el formulario de operaciones con opciones como "Balance" o "Retiro".
 
 **Balance**:
-- Muestra la información de la tarjeta y cliente.
+- Muestra la información de la **Tarjeta** y **Cliente**.
 - Registra una operación de balance en la base de datos.
 
 **Retiro**:
 - Usuario ingresa la cantidad a retirar.
-- Se valida la cantidad y se realiza el retiro si es posible.
-- Se registra la operación de retiro en la base de datos.
+- Se valida la cantidad y se realiza el **Retiro** si es posible.
+- Se registra la operación de **Retiro** en la base de datos.
 
-**Resultados**:
-- Se muestra un formulario con los resultados de la operación.
+**Reporte**:
+- Se muestra un formulario con los datos de la tarjeta y los resultados de la operación.
 
 **Errores**:
 - Si hay algún error (PIN incorrecto, tarjeta bloqueada, saldo insuficiente), se muestra un mensaje de error.
@@ -63,12 +63,12 @@ Por favor, asegúrese de ejecutar el script de creación y, si es necesario, el 
 
 ## Funcionalidades extras
 
-- Se agrego una nueva Entidad llamada Cliente que cada uno esta asociado a su tarjeta
-- Se agrego la funcionalidad de que la tarjeta una vez este bloqueada esta misma se desbloquee en 40seg dentro del programa.
-- Al momento de realizar la operacion de balance se muestra parte de la informacion de la persona asociada.
+- Se agrego una nueva Entidad llamada Cliente que cada uno esta asociado a su **Tarjeta**.
+- Se agrego la funcionalidad de que la tarjeta una vez este bloqueada esta misma se desbloquee despues de 40seg dentro del programa.
+- Al momento de realizar la operacion de balance se muestra parte de la informacion del **Cliente** asociado.
 
 ## Instrucciones para Ejecutar la Aplicación
 
 1. Clona este repositorio.
-2. Configura la cadena de conexión a la base de datos en la capa de Infrastructure/Persistence/Db_Connection.cs.
+2. Configura la cadena de conexión a la base de datos en la capa de Infrastructure/Persistence/DbConfig.cs.
 3. Ejecuta la aplicación desde la interfaz de usuario (Windows Forms).
