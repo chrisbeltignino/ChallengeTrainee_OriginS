@@ -4,6 +4,9 @@ using Presentation;
 
 namespace ChallengeTrainee_OriginS
 {
+    /// <summary>
+    /// Formulario principal que representa la pantalla de inicio del cajero automático.
+    /// </summary>
     public partial class FrmATM : Form
     {
         private readonly ITarjetaService _tarjetaService;

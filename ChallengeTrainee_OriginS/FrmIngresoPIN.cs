@@ -53,6 +53,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para los botones numéricos.
+        /// Agrega el número al cuadro de texto del PIN.
         /// </summary>
         private void NumeroBtn_Click(object sender, EventArgs e)
         {
@@ -69,6 +70,8 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Aceptar.
+        /// Realiza la validación del PIN ingresado y abre el formulario de Operaciones si es válido.
+        /// Caso contrario se bloqueara la tarjeta por 40seg.
         /// </summary>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -109,6 +112,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Limpiar.
+        /// Limpia el cuadro de texto del PIN.
         /// </summary>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -141,12 +145,27 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Salir.
+        /// Redirije al formulario Home.
         /// </summary>
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
             // Abre el formulario de inicio en el formulario principal.
             _parentForm.OpenChildForm(new FrmHome(_tarjetaService, _operacionService, db, _parentForm));
+        }
+
+        /// <summary>
+        /// Manejador de eventos para el botón Borrar.
+        /// Elimina el último carácter del cuadro de texto de la tarjeta.
+        /// </summary>
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay caracteres en el cuadro de texto
+            if (txtPIN.Text.Length > 0)
+            {
+                // Eliminar el último carácter del cuadro de texto
+                txtPIN.Text = txtPIN.Text.Substring(0, txtPIN.Text.Length - 1);
+            }
         }
     }
 }

@@ -55,6 +55,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos que se ejecuta cuando se carga el formulario.
+        /// Muestra la información de la tarjeta y la cliente.
         /// </summary>
         private void FrmBalance_Load(object sender, EventArgs e)
         {
@@ -71,7 +72,7 @@ namespace Presentation
         }
 
         /// <summary>
-        /// Formatea el número de tarjeta para mostrarlo con espacios.
+        /// Formatea el número de tarjeta para mostrarlo con "-".
         /// </summary>
         /// <param name="numeroTarjeta">Número de tarjeta a formatear.</param>
         /// <returns>Número de tarjeta formateado.</returns>
@@ -87,6 +88,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Atrás.
+        /// Redirije al formulario Operaciones.
         /// </summary>
         private void btnAtras_Click(object sender, EventArgs e)
         {
@@ -97,6 +99,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Salir.
+        /// Redirije al formulario Home.
         /// </summary>
         private void btnSalir_Click(object sender, EventArgs e)
         {

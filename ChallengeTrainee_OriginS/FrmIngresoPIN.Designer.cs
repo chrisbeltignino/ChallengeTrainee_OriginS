@@ -45,14 +45,15 @@
             btnSalir = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             label1 = new Label();
+            btnBorrar = new Button();
             SuspendLayout();
             // 
             // btnAceptar
             // 
             btnAceptar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAceptar.Location = new Point(318, 342);
+            btnAceptar.Location = new Point(421, 447);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(81, 70);
+            btnAceptar.Size = new Size(101, 49);
             btnAceptar.TabIndex = 38;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -201,11 +202,23 @@
             label1.TabIndex = 40;
             label1.Text = "Ingrese el PIN:";
             // 
+            // btnBorrar
+            // 
+            btnBorrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBorrar.Location = new Point(318, 342);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(81, 70);
+            btnBorrar.TabIndex = 57;
+            btnBorrar.Text = "<-";
+            btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.Click += btnBorrar_Click;
+            // 
             // FrmIngresoPIN
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(534, 508);
+            Controls.Add(btnBorrar);
             Controls.Add(label1);
             Controls.Add(btnSalir);
             Controls.Add(btnAceptar);
@@ -246,5 +259,6 @@
         private Button btnSalir;
         private System.Windows.Forms.Timer timer1;
         private Label label1;
+        private Button btnBorrar;
     }
 }

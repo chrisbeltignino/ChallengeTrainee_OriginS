@@ -38,6 +38,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos que se ejecuta cuando se carga el formulario.
+        /// Muestra Nombre y Apellido del cliente asociado a la Tarjeta.
         /// </summary>
         private void FrmOperaciones_Load(object sender, EventArgs e)
         {
@@ -46,6 +47,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Salir.
+        /// Redirije al formulario Home.
         /// </summary>
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -56,6 +58,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Balance.
+        /// Realiza el la operacion Balance y redirije al formulario Balance.
         /// </summary>
         private void btnBalance_Click(object sender, EventArgs e)
         {
@@ -69,6 +72,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Retiro.
+        /// Redirije al formulario Retiro.
         /// </summary>
         private void btnRetiro_Click(object sender, EventArgs e)
         {

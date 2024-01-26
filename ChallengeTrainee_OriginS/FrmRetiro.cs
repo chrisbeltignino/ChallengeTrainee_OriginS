@@ -55,6 +55,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para los botones numéricos.
+        /// Agrega el número al cuadro de texto de la cantidad que se desea retirar.
         /// </summary>
         private void NumeroBtn_Click(object sender, EventArgs e)
         {
@@ -69,6 +70,8 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Aceptar.
+        /// Realiza la validación del monto ingresado y realiza el retiro si es válido.
+        /// Una vez realizada la operacion se redirije al formulario Reporte
         /// </summary>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -99,6 +102,7 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Limpiar.
+        /// Limpia el cuadro de texto de la tarjeta.
         /// </summary>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -117,12 +121,27 @@ namespace Presentation
 
         /// <summary>
         /// Manejador de eventos para el botón Salir.
+        /// Redirije al formulario Operaciones.
         /// </summary>
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
             // Abrir el formulario de operaciones en el formulario principal
             _parentForm.OpenChildForm(new FrmOperaciones(_tarjetaService, _operacionService, db, _tarjetaEncontrada, _parentForm));
+        }
+
+        /// <summary>
+        /// Manejador de eventos para el botón Borrar.
+        /// Elimina el último carácter del cuadro de texto de la tarjeta.
+        /// </summary>
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay caracteres en el cuadro de texto
+            if (txtCantidad.Text.Length > 0)
+            {
+                // Eliminar el último carácter del cuadro de texto
+                txtCantidad.Text = txtCantidad.Text.Substring(0, txtCantidad.Text.Length - 1);
+            }
         }
     }
 }

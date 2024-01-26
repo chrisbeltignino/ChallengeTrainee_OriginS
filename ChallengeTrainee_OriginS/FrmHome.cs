@@ -5,6 +5,9 @@ using Infrastructure.Persistence;
 
 namespace Presentation
 {
+    /// <summary>
+    /// Formulario Hijo que representa la pantalla de inicio del cajero automático.
+    /// </summary>
     public partial class FrmHome : Form
     {
         private readonly ITarjetaService _tarjetaService;
@@ -14,6 +17,13 @@ namespace Presentation
 
         private FrmATM _parentForm;
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="FrmHome"/>.
+        /// </summary>
+        /// <param name="tarjetaService">Servicio para operaciones relacionadas con tarjetas.</param>
+        /// <param name="operacionService">Servicio para operaciones generales.</param>
+        /// <param name="db">Conexión a la base de datos.</param>
+        /// <param name="parentForm">Formulario principal del cajero automático.</param>
         public FrmHome(ITarjetaService tarjetaService, IOperacionService operacionService, Db_Connection db, FrmATM parentForm)
         {
             InitializeComponent();
@@ -24,6 +34,7 @@ namespace Presentation
 
             this._parentForm = parentForm;
 
+            // Asociar el evento NumeroBtn_Click a los botones numéricos
             btnCero.Click += NumeroBtn_Click;
             btnUno.Click += NumeroBtn_Click;
             btnDos.Click += NumeroBtn_Click;
@@ -36,11 +47,10 @@ namespace Presentation
             btnNueve.Click += NumeroBtn_Click;
         }
 
-        private void FrmHome_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Manejador de eventos para los botones numéricos.
+        /// Agrega el número al cuadro de texto de la tarjeta y formatea la entrada.
+        /// </summary>
         private void NumeroBtn_Click(object sender, EventArgs e)
         {
             Button boton = (Button)sender;
@@ -63,11 +73,19 @@ namespace Presentation
             }
         }
 
+        /// <summary>
+        /// Manejador de eventos para el botón Limpiar.
+        /// Limpia el cuadro de texto de la tarjeta.
+        /// </summary>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtTarjeta.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Manejador de eventos para el botón Aceptar.
+        /// Valida la tarjeta ingresada y abre el formulario de ingreso de PIN si es válida.
+        /// </summary>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string numeroTarjeta = txtTarjeta.Text.Replace("-", "");
@@ -96,7 +114,21 @@ namespace Presentation
             }
             else
             {
-                MessageBox.Show("La tarjeta debe contener 16 numeros.", "Tarjeta Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("La tarjeta debe contener 16 números.", "Tarjeta Inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Manejador de eventos para el botón Borrar.
+        /// Elimina el último carácter del cuadro de texto de la tarjeta.
+        /// </summary>
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay caracteres en el cuadro de texto
+            if (txtTarjeta.Text.Length > 0)
+            {
+                // Eliminar el último carácter del cuadro de texto
+                txtTarjeta.Text = txtTarjeta.Text.Substring(0, txtTarjeta.Text.Length - 1);
             }
         }
     }

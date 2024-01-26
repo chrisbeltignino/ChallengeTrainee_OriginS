@@ -42,14 +42,15 @@
             btnUno = new Button();
             txtTarjeta = new TextBox();
             label1 = new Label();
+            btnBorrar = new Button();
             SuspendLayout();
             // 
             // btnAceptar
             // 
             btnAceptar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAceptar.Location = new Point(318, 342);
+            btnAceptar.Location = new Point(421, 447);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(81, 70);
+            btnAceptar.Size = new Size(101, 49);
             btnAceptar.TabIndex = 25;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -187,11 +188,23 @@
             label1.TabIndex = 41;
             label1.Text = "Ingrese el numero de la tarjeta:";
             // 
+            // btnBorrar
+            // 
+            btnBorrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBorrar.Location = new Point(318, 342);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(81, 70);
+            btnBorrar.TabIndex = 58;
+            btnBorrar.Text = "<-";
+            btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.Click += btnBorrar_Click;
+            // 
             // FrmHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(534, 508);
+            Controls.Add(btnBorrar);
             Controls.Add(label1);
             Controls.Add(btnAceptar);
             Controls.Add(btnLimpiar);
@@ -209,7 +222,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmHome";
             Text = "FrmHome1";
-            Load += FrmHome_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -230,5 +242,6 @@
         private Button btnUno;
         private TextBox txtTarjeta;
         private Label label1;
+        private Button btnBorrar;
     }
 }

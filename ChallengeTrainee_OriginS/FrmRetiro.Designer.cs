@@ -213,6 +213,7 @@
             btnBorrar.TabIndex = 56;
             btnBorrar.Text = "<-";
             btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.Click += btnBorrar_Click;
             // 
             // label2
             // 
