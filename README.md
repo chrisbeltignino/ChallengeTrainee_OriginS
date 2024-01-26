@@ -2,6 +2,16 @@
 
 Esta aplicación de cajero automático (ATM) fue desarrollada como parte de un ejercicio técnico para Origin Software. La aplicación está diseñada para simular las operaciones de un cajero automático en una aplicación de Windows Form, incluyendo el ingreso de tarjeta, validación de PIN, consultas de saldo, retiros y más.
 
+## Características Principales
+
+- **Entity Framework**: Utiliza Entity Framework para la gestión de la capa de acceso a datos, facilitando la interacción con la base de datos SQL Server.
+  
+- **Capa de Negocio y Datos**: Se ha implementado una arquitectura de tres capas que separa claramente las responsabilidades entre la capa de presentación, la capa de negocio y la capa de acceso a datos.
+
+- **Interfaces, Repositorios y Servicios**: La lógica de negocio se organiza a través de interfaces, repositorios y servicios, proporcionando una estructura modular y fácilmente mantenible.
+
+- **Interfaz Gráfica de Usuario (GUI)**: Se han desarrollado formularios para la interfaz de usuario que permiten a los usuarios interactuar con la aplicación de manera intuitiva.
+
 ## Estructura del Proyecto
 
 El proyecto sigue una arquitectura limpia (Clean Architecture) y está organizado en las siguientes capas:
